@@ -10,16 +10,16 @@ def csv_combiner(argv):
         return "No arguments provided"
     files = list(argv)
     
-    # Checking if filepath provided actually exists in the system
-    path_check = Path(files[i])
-    if not path_check.exists():
-        raise IOError('File or Path does not exist')
-    
     # Checking if all the files provided in argument are csv files
     for i in range(len(files)):
         _, ext = os.path.splitext(files[i])
         if ext!= '.csv':
             raise Exception('Filename specified in argument is not a csv file')
+            
+        # Checking if filepath provided actually exists in the system
+        path_check = Path(files[i])
+        if not path_check.exists():
+            raise IOError('File or Path does not exist')
                 
     # Reading in chunks of 1M, Creating additional filename column and displaying csv output in stdout
     for i in range(len(files)):
