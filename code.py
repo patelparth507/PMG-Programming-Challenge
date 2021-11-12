@@ -8,7 +8,9 @@ def csv_combiner(argv):
     # Checking if atleast 1 file is provided in argument
     if not len(argv):
         return "No arguments provided"
-    files = list(argv)
+    
+    # Checking if same filename is not provided multiple times
+    files = list(set(list(argv)))
     
     # Checking if all the files provided in argument are csv files
     for i in range(len(files)):
