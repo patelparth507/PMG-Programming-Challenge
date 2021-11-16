@@ -25,7 +25,7 @@ def csv_combiner(argv):
                 
     # Reading in chunks of 1M, Creating additional filename column and displaying csv output in stdout
     for i in range(len(files)):
-        reader = pd.read_csv(files[i],chunksize=1000000,low_memory=False) 
+        reader = pd.read_csv(files[i],chunksize=1000000) 
         for chunk in reader:
             chunk['filename'] = os.path.basename(files[i])
             if i==0:
